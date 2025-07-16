@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "nti_project",
   "version": "1.0.0",
@@ -19,3 +20,23 @@
     "mongoose": "^8.16.3"
   }
 }
+=======
+{
+  "name": "nti_project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.16.3"
+  }
+}
+>>>>>>> cbb3a017eeac758ce9090898fe39a01302ae17a9
