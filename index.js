@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const connectToDatabase = require("./config/db");
+const authRoutes = require("./routes/auth.routes");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -15,3 +16,11 @@ connectToDatabase()
     console.error("Database connection failed:", err);
   });
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/api/auth", authRoutes);
+
+//global error handler
+app.use((err, req, res, next) => {
+  res.status(err.status || 500).send(err.message || "Internal Server Error");
+});
