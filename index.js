@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 require("dotenv").config();
 const express = require("express");
 const connectToDatabase = require("./config/db");
@@ -6,31 +5,14 @@ const authRoutes = require("./routes/auth.routes");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-connectToDatabase()
-  .then(() => {
-    console.log("Database connected successfully 🎉");
-    app.listen(PORT, () => {
-      console.log(`Server is running on http://localhost:${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error("Database connection failed:", err);
-  });
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRoutes);
 
-//global error handler
+// Global error handler
 app.use((err, req, res, next) => {
   res.status(err.status || 500).send(err.message || "Internal Server Error");
 });
-=======
-require("dotenv").config();
-const express = require("express");
-const connectToDatabase = require("./config/db");
-const app = express();
-const PORT = process.env.PORT || 3000;
 
 connectToDatabase()
   .then(() => {
@@ -42,5 +24,3 @@ connectToDatabase()
   .catch((err) => {
     console.error("Database connection failed:", err);
   });
-
->>>>>>> cbb3a017eeac758ce9090898fe39a01302ae17a9

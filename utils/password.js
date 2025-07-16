@@ -8,6 +8,16 @@ const hashPassword = async (password) => {
   }
 };
 
+const comparePassword = async (password, hashedPassword) => {
+  try {
+    const isPasswordValid = await bcrypt.compare(password, hashedPassword);
+    return isPasswordValid;
+  } catch (error) {
+    throw new Error("Invalid password");
+  }
+};
+
 module.exports = {
   hashPassword,
+  comparePassword,
 };
