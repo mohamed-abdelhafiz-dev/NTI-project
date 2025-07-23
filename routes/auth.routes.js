@@ -9,8 +9,7 @@ const {
 const upload = require("../config/multer");
 router.post(
   "/register",
-  upload.single("image"),
-
+  upload.single("profileImage"),
   registerValidation,
   validate,
   authController.signUp

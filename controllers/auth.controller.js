@@ -4,7 +4,13 @@ const { generateToken } = require("../utils/token");
 
 const signUp = async (req, res, next) => {
   try {
-    const { name, email, password, role = "user" } = req.body;
+    const {
+      name,
+      email,
+      password,
+      role = "user",
+      profileImage = "",
+    } = req.body;
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       const error = new Error("User already exists");
@@ -18,7 +24,7 @@ const signUp = async (req, res, next) => {
       email,
       password: hashedPassword,
       role,
-      profileImage: req.file.path,
+      profileImage,
     });
 
     const newUser = await User.findOne({ email }).select("-password -__v");
@@ -27,7 +33,13 @@ const signUp = async (req, res, next) => {
 
     res.status(201).json({
       message: "User registered successfully",
-      user: newUser,
+      user: {
+        _id: newUser._id,
+        name: newUser.name,
+        email: newUser.email,
+        role: newUser.role,
+        profileImage: newUser.profileImage,
+      },
       token,
     });
   } catch (error) {

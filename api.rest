@@ -1,0 +1,8 @@
+POST http://localhost:3000/api/auth/register
+
+{
+  "email": "test@example.com",
+  "password": "123456",
+  "name": "Test User",
+  "profileImage": "uploads/profile-images/test@example.com/1692837600000-profileImage.png"
+}
