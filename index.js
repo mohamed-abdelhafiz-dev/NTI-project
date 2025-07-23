@@ -11,7 +11,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRoutes);
 app.use("/api/audios", audioRoutes);
 
-
 // Global error handler
 app.use((err, req, res, next) => {
   res.status(err.status || 500).json({
@@ -20,13 +19,15 @@ app.use((err, req, res, next) => {
   });
 });
 
-connectToDatabase()
-  .then(() => {
-    console.log("Database connected successfully 🎉");
-    app.listen(PORT, () => {
-      console.log(`Server is running on http://localhost:${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error("Database connection failed:", err);
-  });
+// connectToDatabase()
+//   .then(() => {
+//     console.log("Database connected successfully 🎉");
+//     app.listen(PORT, () => {
+//       console.log(`Server is running on http://localhost:${PORT}`);
+//     });
+//   })
+//   .catch((err) => {
+//     console.error("Database connection failed:", err);
+//   });
+
+app.listen(PORT);
