@@ -27,9 +27,8 @@ const connectToDatabase = async () => {
 connectToDatabase()
   .then(() => {
     console.log("Database connected successfully 🎉");
+    app.listen(PORT);
   })
   .catch((err) => {
     console.error("Database connection failed:", err);
   });
-
-app.listen(PORT);
