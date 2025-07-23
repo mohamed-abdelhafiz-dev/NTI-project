@@ -8,8 +8,8 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/api/auth", authRoutes);
-app.use("/api/audios", audioRoutes);
+// app.use("/api/auth", authRoutes);
+// app.use("/api/audios", audioRoutes);
 
 // Global error handler
 app.use((err, req, res, next) => {
