@@ -1,8 +1,9 @@
 require("dotenv").config();
 const express = require("express");
-const connectToDatabase = require("./config/db");
+// const connectToDatabase = require("./config/db");
 const authRoutes = require("./routes/auth.routes");
 const audioRoutes = require("./routes/audio.routes");
+const { default: mongoose } = require("mongoose");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -18,6 +19,10 @@ app.use((err, req, res, next) => {
     error: err.message || "Internal Server Error",
   });
 });
+
+const connectToDatabase = async () => {
+  await mongoose.connect(process.env.db_connection_string);
+};
 
 connectToDatabase()
   .then(() => {
