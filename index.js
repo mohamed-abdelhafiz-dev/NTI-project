@@ -19,15 +19,12 @@ app.use((err, req, res, next) => {
   });
 });
 
-// connectToDatabase()
-//   .then(() => {
-//     console.log("Database connected successfully 🎉");
-//     app.listen(PORT, () => {
-//       console.log(`Server is running on http://localhost:${PORT}`);
-//     });
-//   })
-//   .catch((err) => {
-//     console.error("Database connection failed:", err);
-//   });
+connectToDatabase()
+  .then(() => {
+    console.log("Database connected successfully 🎉");
+  })
+  .catch((err) => {
+    console.error("Database connection failed:", err);
+  });
 
 app.listen(PORT);
