@@ -4,6 +4,7 @@ const upload = require("../config/multer");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
+  res.send("hi")
   const audios = await Audio.find();
   res.json({
     success: true,
